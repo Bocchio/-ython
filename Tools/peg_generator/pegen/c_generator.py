@@ -189,7 +189,7 @@ class CCallMakerVisitor(GrammarVisitor):
 
     def visit_StringLeaf(self, node: StringLeaf) -> FunctionCall:
         val = ast.literal_eval(node.value)
-        if re.match(r"[a-zA-Z_]\w*\Z", val):  # This is a keyword
+        if re.match(r"[a-zA-Z_λ]\w*\Z", val):  # This is a keyword
             if node.value.endswith("'"):
                 return self.keyword_helper(val)
             else:
@@ -480,7 +480,7 @@ class CParserGenerator(ParserGenerator, GrammarVisitor):
     def _group_keywords_by_length(self) -> Dict[int, List[Tuple[str, int]]]:
         groups: Dict[int, List[Tuple[str, int]]] = {}
         for keyword_str, keyword_type in self.keywords.items():
-            length = len(keyword_str)
+            length = len(keyword_str.encode('utf-8'))
             if length in groups:
                 groups[length].append((keyword_str, keyword_type))
             else:

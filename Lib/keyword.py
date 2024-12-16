@@ -50,7 +50,8 @@ kwlist = [
     'try',
     'while',
     'with',
-    'yield'
+    'yield',
+    'λ'
 ]
 
 softkwlist = [
