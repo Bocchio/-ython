@@ -38,3 +38,17 @@ Now you can write things like::
 
     f = λ a: a('hello')
     f(print)
+
+Add to pyenv
+------------
+
+In this repo there's a build file to use with `pyenv <https://github.com/pyenv/pyenv>`_.
+
+Copy the build version with::
+
+    cp ./λython ${PYENV_ROOT}/plugins/python-build/share/python-build
+    pyenv install λython
+
+Then I'm confident you'll want to use this version as your global version::
+
+    pyenv global λython
